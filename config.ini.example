@@ -1,0 +1,84 @@
+; ============================================================
+;  config.ini.example
+;  Copy this file to config.ini and fill in the real values.
+;  NEVER commit config.ini – it contains credentials.
+; ============================================================
+
+[SAP]
+; Description string shown in the SAP Logon pad for the target system
+system_description = SAP ECC Production
+
+; Client number (Mandant)
+client = 100
+
+; SAP username
+username = YOUR_USERNAME
+
+; SAP password – stored in plain text, protect this file with OS permissions
+password = YOUR_PASSWORD
+
+; Language code
+language = EN
+
+; Optional: maximum seconds to wait for a screen to become ready
+screen_wait_timeout = 30
+
+
+[VL06F]
+; --- Selection parameters for the VL06F report ---
+
+; Shipping point(s) – comma-separated if multiple, e.g.: SP01,SP02
+shipping_point = SP01
+
+; Date range mode: "today", "yesterday", "last_n_days", or "custom"
+date_range_mode = today
+
+; Number of days back when date_range_mode = last_n_days
+last_n_days = 7
+
+; Used only when date_range_mode = custom (format: DD.MM.YYYY)
+date_from = 01.01.2024
+date_to   = 31.01.2024
+
+; Layout variant to use (leave blank to use default layout)
+layout_variant =
+
+; Maximum rows to retrieve (0 = no limit)
+max_rows = 0
+
+
+[OUTPUT]
+; Directory where downloaded reports will be saved
+; Supports date placeholders: {YYYY}, {MM}, {DD}
+output_dir = output/{YYYY}/{MM}
+
+; File name template – supports {YYYY}, {MM}, {DD}, {HH}{MIN}{SS}
+file_name = VL06F_Report_{YYYY}{MM}{DD}_{HH}{MIN}{SS}.xlsx
+
+; File format: xlsx or txt (tab-separated)
+file_format = xlsx
+
+
+[SCHEDULE]
+; Set enabled = true to run on a recurring schedule
+enabled = false
+
+; Cron-style schedule fields (used when enabled = true)
+; Run every weekday at 07:00
+cron_day_of_week = mon-fri
+cron_hour        = 7
+cron_minute      = 0
+
+; Timezone for the schedule
+timezone = Asia/Jakarta
+
+
+[LOGGING]
+; Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_level = INFO
+
+; Directory where log files are written
+log_dir = logs
+
+; Keep this many log files (older ones are rotated out)
+backup_count = 7
