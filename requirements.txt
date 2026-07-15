@@ -1,0 +1,18 @@
+# SAP GUI scripting (Windows COM) – install separately on target machine
+# pywin32 must be installed via: pip install pywin32
+pywin32==306
+
+# Scheduling
+APScheduler==3.10.4
+
+# Configuration parsing (built-in, listed for clarity)
+# configparser – stdlib
+
+# Logging (stdlib)
+# logging – stdlib
+
+# Excel / spreadsheet handling
+openpyxl==3.1.2
+
+# Optional: for reading .xlsx output files
+XlsxWriter==3.2.0
